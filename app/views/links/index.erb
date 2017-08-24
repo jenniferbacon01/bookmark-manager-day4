@@ -5,8 +5,11 @@
     <li>
       Title: <%= link.title %>
       URL:   <%= link.url   %>
+        <% @tags.each do |tag| %>
+        Tag:   <%= tag.tagname %>
+        <% end %>
+      <% end %>
     </li>
-  <% end %>
 </ul>
 
 <form action='/links/new' method='get'>

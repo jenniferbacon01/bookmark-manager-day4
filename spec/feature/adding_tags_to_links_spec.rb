@@ -13,6 +13,7 @@ feature 'Tags' do
     fill_in :title, with: 'Makers Academy'
     fill_in :url, with: 'http://www.makersacademy.com'
     fill_in :tag, with: 'coding schools'
-    expect(page).to have content 'coding schools'
+    click_button 'Submit'
+    expect(page).to have_content 'coding schools'
   end
 end
