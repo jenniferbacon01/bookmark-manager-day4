@@ -1,10 +1,6 @@
 
 
 
-
-
-
-
 feature 'Adding links' do
   before do
     DatabaseCleaner.strategy = :truncation
