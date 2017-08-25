@@ -4,6 +4,6 @@ require 'dm-postgres-adapter'
 class Tag
   include DataMapper::Resource
   property :id, Serial
-  property :tagname, String
+  property :name, String
   has n, :links, :through => Resource
 end

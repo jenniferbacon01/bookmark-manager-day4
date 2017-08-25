@@ -1,5 +1,6 @@
 ENV['RACK_ENV'] ||= 'development'
 
+require 'capybara'
 require 'sinatra/base'
 require_relative 'data_mapper_setup'
 
@@ -20,16 +21,17 @@ class BookmarkManager < Sinatra::Base
       :url => params[:url]
     )
     tag = Tag.create(
-      :tagname => params[:tagname]
+      :name => params[:name]
     )
     link.tags << tag
     link.save
     redirect '/links'
   end
 
-  get '/tags/bubbles' do
-    @links = Link.all
-    @tags = Tag.all
-    erb :'tags/bubbles'
+  get '/tags/:name' do
+    tag = Tag.first(name: params[:name])
+    @links = tag ? tag.links : []
+    erb :'links/index'
   end
+
 end
